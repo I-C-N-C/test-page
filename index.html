@@ -174,6 +174,45 @@
             color: var(--primary);
         }
 
+        /* --- NOVÁ SEKCE ZNAČEK --- */
+        .brands-section {
+            background-color: var(--white);
+            padding: 50px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .brands-title {
+            text-align: center;
+            color: #94a3b8;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+        }
+
+        .brands-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 30px 70px;
+        }
+
+        .brand-logo {
+            font-size: 26px;
+            font-weight: 800;
+            color: #cbd5e1; /* Světle šedá, aby loga nekřičela */
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+
+        .brand-logo:hover {
+            color: var(--secondary); /* Obarvení do modra po najetí */
+            transform: scale(1.05);
+        }
+        /* ------------------------- */
+
         .section {
             padding: 100px 0;
         }
@@ -457,6 +496,23 @@
             <div class="hero-buttons">
                 <a href="#kontakt" class="btn btn-solid">Napsat poptávku</a>
                 <a href="#sluzby" class="btn btn-outline">Naše služby</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- NOVÁ SEKCE ZNAČEK -->
+    <section class="brands-section">
+        <div class="container">
+            <p class="brands-title">Instalujeme a servisujeme špičkové značky</p>
+            <div class="brands-logos">
+                <!-- Čistý CSS a typografický design log -->
+                <span class="brand-logo" style="font-family: Arial, sans-serif; letter-spacing: 1px; text-transform: uppercase;">DAIKIN</span>
+                <span class="brand-logo" style="font-family: 'Times New Roman', serif; font-weight: bold;">TOSHIBA</span>
+                <span class="brand-logo" style="font-family: Impact, sans-serif; letter-spacing: 2px; text-transform: uppercase;">SAMSUNG</span>
+                <span class="brand-logo" style="font-family: Helvetica, sans-serif; text-transform: uppercase;">LG</span>
+                <span class="brand-logo" style="font-family: 'Trebuchet MS', sans-serif; font-weight: bold;">Panasonic</span>
+                <span class="brand-logo" style="font-family: Arial, sans-serif; font-style: italic; font-weight: 900;">Midea</span>
+                <span class="brand-logo" style="font-family: Tahoma, sans-serif; text-transform: uppercase;">SINCLAIR</span>
             </div>
         </div>
     </section>
