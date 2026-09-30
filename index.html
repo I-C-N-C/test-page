@@ -11,11 +11,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     
     <style>
-        /* CSS Proměnné pro konzistentní barvy (Modrá, Oranžová, Tmavá) */
         :root {
-            --primary-blue: #0022aa; /* Tmavší modrá inspirovaná obrázkem patičky */
-            --primary-blue-hover: #001177;
-            --light-blue: #0284c7; /* Světlejší modrá pro tlačítka */
+            --primary-blue: #0022aa; 
+            --light-blue: #0284c7;
+            --light-blue-hover: #0369a1;
             --accent-orange: #ea580c;
             --text-dark: #1e293b;
             --text-light: #64748b;
@@ -24,7 +23,6 @@
             --transition: all 0.3s ease;
         }
 
-        /* Reset a základní nastavení typografie */
         * {
             margin: 0;
             padding: 0;
@@ -40,6 +38,26 @@
             background-color: var(--bg-light);
             color: var(--text-dark);
             line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-padding {
+            padding: 6rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.25rem;
+            margin-bottom: 3.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--text-dark);
         }
 
         header {
@@ -100,7 +118,7 @@
         }
 
         .btn-phone:hover {
-            background-color: #0369a1;
+            background-color: var(--light-blue-hover);
             transform: translateY(-2px);
         }
 
@@ -108,7 +126,6 @@
             padding: 12rem 2rem 8rem;
             text-align: center;
             background: linear-gradient(135deg, #e0f2fe 0%, var(--white) 100%);
-            position: relative;
         }
 
         .hero h1 {
@@ -126,29 +143,12 @@
             font-size: 1.125rem;
             color: var(--text-light);
             max-width: 600px;
-            margin: 0 auto 2.5rem;
-        }
-
-        .section-padding {
-            padding: 6rem 2rem;
-        }
-
-        .container {
-            max-width: 1200px;
             margin: 0 auto;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.25rem;
-            margin-bottom: 3.5rem;
-            font-weight: 700;
-            text-transform: uppercase;
         }
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
         }
 
@@ -182,12 +182,6 @@
         .service-card h3 {
             font-size: 1.25rem;
             margin-bottom: 1rem;
-            color: var(--text-dark);
-        }
-
-        .service-card p {
-            color: var(--text-light);
-            font-size: 0.95rem;
         }
 
         .locations {
@@ -196,6 +190,7 @@
             text-align: center;
             border-radius: 2rem;
             padding: 5rem 2rem;
+            margin-bottom: 4rem;
         }
 
         .locations h2 {
@@ -224,15 +219,61 @@
             transform: scale(1.05);
         }
 
+        .reference-section {
+            background-color: var(--white);
+        }
+
+        .refs-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .ref-item {
+            position: relative;
+            border-radius: 1rem;
+            overflow: hidden;
+            aspect-ratio: 4 / 3;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .ref-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .ref-item:hover img {
+            transform: scale(1.1); /* Zoom efekt při najetí */
+        }
+
+        .ref-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            padding: 2rem 1rem 1rem;
+            color: white;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .ref-item:hover .ref-overlay {
+            opacity: 1;
+        }
+
         footer {
             background-color: var(--primary-blue);
             color: var(--white);
-            padding: 5rem 2rem 2rem;
-            margin-top: 6rem;
+            padding: 5rem 0 2rem;
+            margin-top: 4rem;
         }
 
         .footer-title {
-            text-align: left;
             font-size: 2.5rem;
             margin-bottom: 2rem;
             font-weight: 700;
@@ -244,8 +285,6 @@
             display: grid;
             grid-template-columns: 1fr 2fr;
             gap: 4rem;
-            text-align: left;
-            margin-top: 2rem;
         }
 
         /* Levé kontaktní údaje */
@@ -253,15 +292,11 @@
             display: flex;
             flex-direction: column;
             gap: 1.5rem;
-            padding-top: 1rem;
-        }
-
-        .contact-item {
-            font-size: 1.125rem;
         }
 
         .contact-item p {
             font-weight: 700;
+            font-size: 1.125rem;
             margin-bottom: 0.2rem;
         }
 
@@ -289,6 +324,11 @@
             gap: 1rem;
         }
 
+        .form-inputs-right {
+            display: flex;
+            flex-direction: column;
+        }
+
         .contact-form input,
         .contact-form textarea {
             width: 100%;
@@ -302,8 +342,8 @@
         }
 
         .contact-form textarea {
-            height: 100%;
-            min-height: 250px;
+            flex-grow: 1;
+            min-height: 200px;
             resize: vertical;
         }
 
@@ -326,21 +366,32 @@
         }
 
         .contact-form button {
-            background-color: var(--white);
-            color: var(--primary-blue);
+            background-color: var(--light-blue);
+            color: var(--white);
             border: none;
             padding: 0.8rem 2.5rem;
             font-weight: 700;
             font-size: 1rem;
             cursor: pointer;
             transition: var(--transition);
-            margin-top: 1rem;
+            margin-top: 0.5rem;
         }
 
         .contact-form button:hover {
-            background-color: #f1f5f9;
+            background-color: var(--light-blue-hover);
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        #success-message {
+            display: none;
+            grid-column: 1 / -1;
+            background-color: #4ade80;
+            color: #14532d;
+            padding: 1.5rem;
+            text-align: center;
+            font-weight: 600;
+            border-radius: 4px;
         }
 
         .copyright {
@@ -352,20 +403,10 @@
             text-align: center;
         }
 
-        /* Zpráva o úspěšném odeslání */
-        #success-message {
-            display: none;
-            grid-column: 1 / -1;
-            background-color: #4ade80;
-            color: #14532d;
-            padding: 1rem;
-            text-align: center;
-            font-weight: 600;
-            border-radius: 4px;
-            margin-top: 1rem;
-        }
-
         @media (max-width: 992px) {
+            .refs-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
             .contact-wrapper {
                 grid-template-columns: 1fr;
                 gap: 3rem;
@@ -389,6 +430,9 @@
             .locations {
                 border-radius: 0;
             }
+            .refs-grid {
+                grid-template-columns: 1fr;
+            }
             .contact-form form {
                 grid-template-columns: 1fr;
             }
@@ -408,7 +452,8 @@
             <a href="#" class="logo">KLIMA<span>DOMA</span></a>
             <nav class="nav-links">
                 <a href="#sluzby">Služby</a>
-                <a href="#o-nas">Reference</a>
+                <a href="#o-nas">O nás</a>
+                <a href="#reference">Reference</a>
                 <a href="#kontakt">Kontakt</a>
                 <a href="tel:605991892" class="btn-phone">📞 605 991 892</a>
             </nav>
@@ -423,7 +468,7 @@
     </section>
 
     <section id="sluzby" class="section-padding container">
-        <h2 class="section-title" style="color: var(--text-dark);">Co pro vás zajistíme?</h2>
+        <h2 class="section-title">Co pro vás zajistíme?</h2>
         <div class="services-grid">
             <div class="service-card">
                 <div class="service-icon">🤝</div>
@@ -443,8 +488,8 @@
         </div>
     </section>
 
-    <section id="o-nas" class="section-padding">
-        <div class="container locations">
+    <section id="o-nas" class="container">
+        <div class="locations">
             <h2>Kde všude instalujeme?</h2>
             <div class="tags-container">
                 <div class="tag">🏠 Rodinné domy</div>
@@ -455,11 +500,43 @@
         </div>
     </section>
 
+    <section id="reference" class="section-padding reference-section">
+        <div class="container">
+            <h2 class="section-title">Ukázky naší práce</h2>
+            <div class="refs-grid">
+                <div class="ref-item">
+                    <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=80" alt="Reference 1">
+                    <div class="ref-overlay">Montáž v rodinném domě</div>
+                </div>
+                <div class="ref-item">
+                    <img src="https://images.unsplash.com/photo-1502005097973-f54252377b28?auto=format&fit=crop&w=600&q=80" alt="Reference 2">
+                    <div class="ref-overlay">Instalace do moderního obýváku</div>
+                </div>
+                <div class="ref-item">
+                    <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=600&q=80" alt="Reference 3">
+                    <div class="ref-overlay">Bytová jednotka - ložnice</div>
+                </div>
+                <div class="ref-item">
+                    <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=600&q=80" alt="Reference 4">
+                    <div class="ref-overlay">Velkokapacitní kanceláře</div>
+                </div>
+                <div class="ref-item">
+                    <img src="https://images.unsplash.com/photo-1583847268964-b28ce8f52f34?auto=format&fit=crop&w=600&q=80" alt="Reference 5">
+                    <div class="ref-overlay">Skrytá instalace v interiéru</div>
+                </div>
+                <div class="ref-item">
+                    <img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=600&q=80" alt="Reference 6">
+                    <div class="ref-overlay">Moderní podkrovní byt</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <footer id="kontakt">
         <div class="container">
             <div class="contact-wrapper">
                 
-                <!-- Levá část: Kontaktní údaje a nadpis -->
+                <!-- Levý sloupec: Kontaktní údaje -->
                 <div>
                     <h2 class="footer-title">KONTAKT</h2>
                     <div class="contact-info">
@@ -477,10 +554,11 @@
                     </div>
                 </div>
 
-                <!-- Pravá část: Kontaktní formulář dle vizuálu -->
+                <!-- Pravý sloupec: Kontaktní formulář -->
                 <div class="contact-form">
                     <form id="contactForm">
                         
+                        <!-- 5 malých políček vlevo -->
                         <div class="form-inputs-left">
                             <input type="email" id="email" placeholder="Email" required>
                             <input type="text" id="name" placeholder="Jméno Příjmení" required>
@@ -489,13 +567,16 @@
                             <input type="tel" id="phone" placeholder="Telefon">
                         </div>
                         
+                        <!-- Velká textová oblast vpravo -->
                         <div class="form-inputs-right">
                             <textarea id="message" placeholder="Zde napište Váš požadavek nebo dotaz. Děkujeme." required></textarea>
                         </div>
                         
+                        <!-- Hláška po úspěšném odeslání -->
                         <div id="success-message">Vaše zpráva byla úspěšně odeslána. Děkujeme!</div>
                         
-                        <div class="form-submit-row">
+                        <!-- Modré tlačítko dole pod formulářem -->
+                        <div class="form-submit-row" id="submit-row">
                             <button type="submit">ODESLAT</button>
                         </div>
                         
@@ -512,17 +593,22 @@
 
     <script>
         document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault(); // Zabrání přesměrování stránky
+            e.preventDefault(); // Zabrání přesměrování stránky (simulace odeslání)
             
-            // Skryje políčka formuláře
-            const inputs = document.querySelectorAll('.form-inputs-left, .form-inputs-right, .form-submit-row');
-            inputs.forEach(el => el.style.display = 'none');
+            // Skryje políčka formuláře a tlačítko
+            const leftCol = document.querySelector('.form-inputs-left');
+            const rightCol = document.querySelector('.form-inputs-right');
+            const submitBtn = document.getElementById('submit-row');
+            
+            leftCol.style.display = 'none';
+            rightCol.style.display = 'none';
+            submitBtn.style.display = 'none';
             
             // Zobrazí hezkou zprávu o úspěchu
             const successMsg = document.getElementById('success-message');
             successMsg.style.display = 'block';
             
-            // Volitelně formulář resetuje (pokud bychom ho chtěli znovu ukázat)
+            // Volitelně formulář resetuje na pozadí
             this.reset();
         });
     </script>
