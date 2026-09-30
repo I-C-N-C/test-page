@@ -174,7 +174,7 @@
             filter: none;
             transform: scale(1.05);
         }
-
+        
         /* Stylování jednotlivých čtverců a log pro CSS reprezentaci */
         .brand-box {
             width: 120px;
@@ -370,7 +370,10 @@
             resize: none;
             min-height: 100%; /* Roztažení textarey přes celou výšku pravého sloupce */
         }
-
+        .calendar { 
+                display: grid;
+                place-items: center;
+        }
         /* Tlačítko pod formulářem */
         .submit-col {
             grid-column: 1 / -1; /* Roztažení přes oba sloupce */
@@ -555,7 +558,7 @@
             </div>
         </div>
     </section>
-        <div align="middle">
+        <div class="calendar">
 <iframe src="https://calendar.google.com/calendar/embed?src=fl4kylp%40gmail.com&ctz=UTC" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
       </div>
     <footer id="kontakt">
