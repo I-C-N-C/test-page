@@ -265,6 +265,79 @@
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             color: #94a3b8;
             font-size: 0.875rem;
+            text-align: center;
+        }
+
+        /* --- NOVÉ STYLY PRO KONTAKTNÍ SEKCI --- */
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 4rem;
+            text-align: left;
+            margin-top: 2rem;
+        }
+
+        .contact-form form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .form-inputs-left {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            background-color: transparent;
+            color: var(--white);
+            font-family: inherit;
+            transition: var(--transition);
+        }
+
+        .contact-form textarea {
+            height: 100%;
+            min-height: 180px;
+            resize: vertical;
+        }
+
+        .contact-form input::placeholder,
+        .contact-form textarea::placeholder {
+            color: #cbd5e1;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--white);
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .form-submit-row {
+            grid-column: 1 / -1;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .contact-form button {
+            background-color: var(--white);
+            color: var(--primary-blue);
+            border: none;
+            padding: 0.5rem 2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 1rem;
+        }
+
+        .contact-form button:hover {
+            background-color: #e2e8f0;
+            transform: translateY(-2px);
         }
 
         /* Responzivní design pro mobily */
@@ -277,6 +350,20 @@
             }
             .locations {
                 border-radius: 0;
+            }
+            /* Úprava pro mobily - zrušení mřížky, vše pod sebou */
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            .contact-form form {
+                grid-template-columns: 1fr;
+            }
+            .contact-form textarea {
+                min-height: 120px;
+            }
+            .form-submit-row {
+                justify-content: flex-start;
             }
         }
     </style>
@@ -339,19 +426,51 @@
     </section>
 
     <footer id="kontakt">
-        <div class="container footer-content">
-            <h2>Zavolejte nám nebo napište</h2>
+        <div class="container">
+            <h2 class="section-title" style="color: var(--white); margin-bottom: 2rem;">KONTAKT</h2>
             
-            <div class="contact-item">
-                <p>📞 Telefon: <a href="tel:605991892">605 991 892</a></p>
-            </div>
-            
-            <div class="contact-item">
-                <p>✉️ E-mail: <a href="mailto:infoklimadoma@gmail.com">infoklimadoma@gmail.com</a></p>
-            </div>
-            
-            <div class="contact-item">
-                <p style="color: #cbd5e1; margin-top: 2rem;">📍 Nádražní 227, 250 64 Hovorčovice</p>
+            <div class="contact-wrapper">
+                
+                <!-- Levá část: Kontaktní údaje -->
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <p style="font-weight: 700; margin-bottom: 0.5rem;">605 991 892</p>
+                        <p style="font-weight: 700;"><a href="mailto:infoklimadoma@gmail.com" style="color: var(--white);">infoklimadoma@gmail.com</a></p>
+                    </div>
+                    
+                    <div class="contact-item" style="margin-top: 1.5rem;">
+                        <p><a href="https://www.klimadoma.com" style="color: #ef4444; font-weight: 600;">Klimadoma.com</a></p>
+                        <p><a href="https://www.klimadoma.com" style="color: #ef4444; font-weight: 600; text-decoration: underline;">www.klimadoma.com</a></p>
+                    </div>
+                    
+                    <div class="contact-item" style="margin-top: 1.5rem;">
+                        <p style="color: #cbd5e1;">Hovorčovice, Nádražní 227</p>
+                    </div>
+                </div>
+
+                <!-- Pravá část: Kontaktní formulář -->
+                <div class="contact-form">
+                    <form onsubmit="event.preventDefault(); alert('Formulář by se nyní odeslal na email infoklimadoma@gmail.com');">
+                        
+                        <div class="form-inputs-left">
+                            <input type="email" placeholder="Email" required>
+                            <input type="text" placeholder="Jméno Příjmení" required>
+                            <input type="text" placeholder="Předmět">
+                            <input type="text" placeholder="Společnost">
+                            <input type="tel" placeholder="Telefon">
+                        </div>
+                        
+                        <div class="form-inputs-right">
+                            <textarea placeholder="Zde napište Váš požadavek nebo dotaz. Děkujeme." required></textarea>
+                        </div>
+                        
+                        <div class="form-submit-row">
+                            <button type="submit">ODESLAT</button>
+                        </div>
+                        
+                    </form>
+                </div>
+
             </div>
 
             <div class="copyright">
