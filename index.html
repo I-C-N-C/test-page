@@ -9,15 +9,15 @@
     
     <style>
         :root {
-            --primary: #0033b3; /* Tmavě modrá z předlohy formuláře */
-            --secondary: #0ea5e9; /* Světle modrá pro akcenty */
-            --accent: #f97316; /* Oranžová pro detaily */
+            --primary: #0033b3; 
+            --secondary: #0ea5e9; 
+            --accent: #f97316; 
             --dark: #1e293b;
             --light: #f8fafc;
             --white: #ffffff;
             --gray: #64748b;
             
-            /* Jednotné zaoblení pro celý web podle zadání */
+            /* Jednotné zaoblení pro celý web */
             --radius: 1.5rem; 
         }
 
@@ -69,6 +69,10 @@
             color: var(--primary);
             text-decoration: none;
             letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--secondary);
         }
 
         .nav-links {
@@ -209,23 +213,24 @@
 
         .ref-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem; /* Nastavení mezer dle požadavku */
         }
 
         .ref-item {
-            border-radius: var(--radius);
-            overflow: hidden;
             position: relative;
-            aspect-ratio: 4/3;
-            background-color: #e2e8f0;
+            overflow: hidden;
+            border-radius: var(--radius);
+            aspect-ratio: 4/3; /* Zajišťuje stejný tvar pro všechny karty */
+            background-color: #e2e8f0; /* Záložní barva, kdyby se obrázek nenačetl */
             box-shadow: 0 10px 30px rgba(0,0,0,0.08);
         }
 
         .ref-item img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: cover; /* KLÍČOVÁ OPRAVA: Obrázek vyplní celý kontejner a ořízne se */
+            display: block;
             transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
@@ -233,38 +238,22 @@
             transform: scale(1.08); /* Jemný plynulý zoom při najetí */
         }
 
-        .locations {
-            background-color: var(--secondary);
+        .ref-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
             color: var(--white);
-            padding: 80px 20px;
-            text-align: center;
-            border-radius: var(--radius);
-            margin: 50px 20px 100px; /* Přidán margin zleva i zprava pro konzistenci */
-            max-width: 1160px; /* Šířka containeru mínus padding */
-            margin-left: auto;
-            margin-right: auto;
-            box-shadow: 0 20px 40px rgba(14, 165, 233, 0.2);
-        }
-
-        .tags-flex {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 40px;
-        }
-
-        .tag {
-            background: rgba(255,255,255,0.25);
-            padding: 12px 30px;
-            border-radius: var(--radius);
+            padding: 30px 20px 20px;
             font-weight: 600;
-            backdrop-filter: blur(5px);
-            transition: background 0.3s;
+            text-align: center;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
         }
-        
-        .tag:hover {
-            background: rgba(255,255,255,0.4);
+
+        .ref-item:hover .ref-overlay {
+            transform: translateY(0); /* Vyjetí textu při najetí myší */
         }
 
         footer {
@@ -323,11 +312,10 @@
             display: flex;
         }
 
-        /* Zde je klíčové zaoblení políček formuláře */
         .form-layout input, 
         .form-layout textarea {
             width: 100%;
-            padding: 18px 25px; /* Větší padding pro lepší pocit ze zaoblení */
+            padding: 18px 25px; 
             background: transparent;
             border: 1px solid rgba(255,255,255,0.4);
             color: var(--white);
@@ -352,7 +340,7 @@
         .form-layout textarea {
             flex-grow: 1;
             resize: none;
-            min-height: 250px; /* Zajišťuje velkou text areu napravo */
+            min-height: 250px; 
         }
 
         .submit-col {
@@ -362,7 +350,6 @@
             margin-top: 15px;
         }
 
-        /* Zaoblení tlačítka odeslat */
         .submit-col button {
             background-color: var(--white);
             color: var(--primary);
@@ -381,7 +368,6 @@
             box-shadow: 0 15px 30px rgba(0,0,0,0.15);
         }
 
-        /* Zpráva o odeslání - moderní alert box */
         #success-msg {
             display: none;
             grid-column: 1 / -1;
@@ -491,40 +477,31 @@
     <section id="reference" class="section container">
         <h2 class="section-title">Ukázky naší práce</h2>
         <div class="ref-grid">
-<div class="ref-item">
-                    <img src="edc5f0_f563820b7ddb4809b5867be46c5bcd1b~mv2_d_2304_4096_s_2.avif">
-                    <div class="ref-overlay">Montáž v rodinném domě</div>
-                </div>
-                <div class="ref-item">
-                    <img src="edc5f0_155d99a5c1e04e8da778347df84540f7~mv2_d_4096_2304_s_2.avif" alt="Reference 2">
-                    <div class="ref-overlay">Instalace do moderního obýváku</div>
-                </div>
-                <div class="ref-item">
-                    <img src="edc5f0_93513e05f01a49429cec5b0e37d9b81a~mv2.avif" alt="Reference 3">
-                    <div class="ref-overlay">Bytová jednotka - ložnice</div>
-                </div>
-                <div class="ref-item">
-                    <img src="edc5f0_8d0caaf74ac043ff9c770de0ae43bd74~mv2_d_2304_4096_s_2.avif" alt="Reference 4">
-                    <div class="ref-overlay">Velkokapacitní kanceláře</div>
-                </div>
-                <div class="ref-item">
-                    <img src="edc5f0_776771eefc1341768475406606c7d65e~mv2_d_2304_4096_s_2.avif" alt="Reference 5">
-                    <div class="ref-overlay">Skrytá instalace v interiéru</div>
-                </div>
-                <div class="ref-item">
-                    <img src="edc5f0_6fe200d1e62549a1bb2de19c5d83d1e9~mv2_d_2304_4096_s_2.avif" alt="Reference 6">
-                    <div class="ref-overlay">Moderní podkrovní byt</div>
-                </div>
-        </div>
-    </section>
-
-    <section class="locations">
-        <h2 style="font-size: 32px;">Kde všude instalujeme?</h2>
-        <div class="tags-flex">
-            <div class="tag">🏠 Rodinné domy</div>
-            <div class="tag">🏢 Byty a kanceláře</div>
-            <div class="tag">🏡 Chaty a chalupy</div>
-            <div class="tag">🚐 Mobilheimy a buňky</div>
+            <div class="ref-item">
+                <!-- Doplněno chování při chybějícím obrázku (onerror) pro lepší zobrazení v náhledu, pokud soubor chybí -->
+                <img src="edc5f0_f563820b7ddb4809b5867be46c5bcd1b~mv2_d_2304_4096_s_2.avif" alt="Reference 1" onerror="this.src='https://placehold.co/600x400/e2e8f0/64748b?text=Montaz+v+rodinnem+dome'">
+                <div class="ref-overlay">Montáž v rodinném domě</div>
+            </div>
+            <div class="ref-item">
+                <img src="edc5f0_155d99a5c1e04e8da778347df84540f7~mv2_d_4096_2304_s_2.avif" alt="Reference 2" onerror="this.src='https://placehold.co/600x400/e2e8f0/64748b?text=Moderni+obyvak'">
+                <div class="ref-overlay">Instalace do moderního obýváku</div>
+            </div>
+            <div class="ref-item">
+                <img src="edc5f0_93513e05f01a49429cec5b0e37d9b81a~mv2.avif" alt="Reference 3" onerror="this.src='https://placehold.co/600x400/e2e8f0/64748b?text=Bytova+jednotka'">
+                <div class="ref-overlay">Bytová jednotka - ložnice</div>
+            </div>
+            <div class="ref-item">
+                <img src="edc5f0_8d0caaf74ac043ff9c770de0ae43bd74~mv2_d_2304_4096_s_2.avif" alt="Reference 4" onerror="this.src='https://placehold.co/600x400/e2e8f0/64748b?text=Velkokapacitni+kancelare'">
+                <div class="ref-overlay">Velkokapacitní kanceláře</div>
+            </div>
+            <div class="ref-item">
+                <img src="edc5f0_776771eefc1341768475406606c7d65e~mv2_d_2304_4096_s_2.avif" alt="Reference 5" onerror="this.src='https://placehold.co/600x400/e2e8f0/64748b?text=Skryta+instalace'">
+                <div class="ref-overlay">Skrytá instalace v interiéru</div>
+            </div>
+            <div class="ref-item">
+                <img src="edc5f0_6fe200d1e62549a1bb2de19c5d83d1e9~mv2_d_2304_4096_s_2.avif" alt="Reference 6" onerror="this.src='https://placehold.co/600x400/e2e8f0/64748b?text=Moderni+podkrovni+byt'">
+                <div class="ref-overlay">Moderní podkrovní byt</div>
+            </div>
         </div>
     </section>
 
@@ -542,7 +519,6 @@
                 <p style="margin-top: 40px; opacity: 0.8;">Hovorčovice, Nádražní 227</p>
             </div>
 
-            <!-- Formulář uspořádaný podle obrázku: 5 polí vlevo, textarea vpravo -->
             <div>
                 <form id="contactForm" class="form-layout">
                     
@@ -558,7 +534,6 @@
                         <textarea placeholder="Zde napište Váš požadavek nebo dotaz. Děkujeme." required></textarea>
                     </div>
 
-                    <!-- Custom zpráva namísto window.alert -->
                     <div id="success-msg">
                         ✅ Děkujeme, Vaše zpráva byla úspěšně odeslána. Brzy se Vám ozveme.
                     </div>
@@ -580,12 +555,10 @@
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault(); 
             
-            // Plynule skryje políčka a tlačítko
             document.getElementById('form-left').style.display = 'none';
             document.getElementById('form-right').style.display = 'none';
             document.getElementById('form-submit').style.display = 'none';
             
-            // Zobrazí moderní děkovnou zprávu přímo na místě formuláře
             document.getElementById('success-msg').style.display = 'block';
             
             this.reset();
