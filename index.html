@@ -8,16 +8,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     
     <style>
+        /* --- GLOBAL VARIABLES --- */
         :root {
             --primary: #0033b3; 
-            --secondary: #0ea5e9; /* Světlejší modrá pro lepší kontrast na tmavém pozadí */
+            --secondary: #0ea5e9; 
             --accent: #f97316; 
             --dark: #1e293b;
             --light: #f8fafc;
             --white: #ffffff;
-            --gray: #64748b;
             
-            /* Jednotné zaoblení pro celý web - 1.5rem */
+            /* CRITICAL REQUIREMENT: Consistent 1.5rem border radius */
             --radius: 1.5rem; 
         }
 
@@ -26,9 +26,6 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Poppins', sans-serif;
-        }
-
-        html {
             scroll-behavior: smooth;
         }
 
@@ -45,6 +42,7 @@
             padding: 0 20px;
         }
 
+        /* --- HEADER --- */
         header {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
@@ -96,8 +94,10 @@
             background-color: var(--secondary);
             color: var(--white) !important;
             padding: 12px 30px;
-            border-radius: var(--radius);
+            border-radius: var(--radius); /* Rounded */
             box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
+            text-decoration: none;
+            font-weight: 600;
             transition: all 0.3s;
         }
 
@@ -106,15 +106,15 @@
             transform: translateY(-2px);
         }
 
+        /* --- HERO SECTION --- */
         .hero {
             padding: 220px 20px 160px;
             text-align: center;
-            /* Přidán obrázek moderního interiéru s tmavým překryvem */
-            background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(0, 15, 60, 0.85)),
+            background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(0, 15, 60, 0.85)),
                         url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
             background-position: center;
-            background-attachment: fixed; /* Parallax efekt */
+            background-attachment: fixed;
             color: var(--white);
         }
 
@@ -122,10 +122,9 @@
             font-size: clamp(36px, 5vw, 64px);
             margin-bottom: 25px;
             line-height: 1.2;
-            color: var(--white);
         }
 
-        .hero h1 span.blue { color: var(--secondary); } /* Světlejší modrá pro čitelnost na tmavém */
+        .hero h1 span.blue { color: var(--secondary); }
         .hero h1 span.orange { color: var(--accent); }
 
         .hero p {
@@ -135,60 +134,11 @@
             margin: 0 auto 40px;
         }
 
-        .hero-buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 16px 40px;
-            border-radius: var(--radius);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 16px;
-            transition: all 0.3s;
-        }
-
-        .btn-solid {
-            background-color: var(--secondary);
-            color: var(--white);
-            box-shadow: 0 10px 25px rgba(14, 165, 233, 0.4);
-        }
-
-        .btn-solid:hover {
-            background-color: var(--primary);
-            transform: translateY(-3px);
-            box-shadow: 0 15px 35px rgba(0, 51, 204, 0.4);
-        }
-
-        .btn-outline {
-            background-color: transparent;
-            color: var(--white);
-            border: 2px solid var(--white);
-        }
-
-        .btn-outline:hover {
-            background-color: var(--white);
-            color: var(--primary);
-        }
-
-        /* --- NOVÁ SEKCE ZNAČEK --- */
+        /* --- BRANDS SECTION (CSS Styled Logos) --- */
         .brands-section {
             background-color: var(--white);
-            padding: 50px 0;
+            padding: 60px 0;
             border-bottom: 1px solid rgba(0,0,0,0.05);
-        }
-
-        .brands-title {
-            text-align: center;
-            color: #94a3b8;
-            font-size: 14px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 30px;
         }
 
         .brands-logos {
@@ -196,23 +146,63 @@
             justify-content: center;
             align-items: center;
             flex-wrap: wrap;
-            gap: 30px 70px;
+            gap: 40px 60px;
         }
 
-        .brand-logo {
-            font-size: 26px;
-            font-weight: 800;
-            color: #cbd5e1; /* Světle šedá, aby loga nekřičela */
-            transition: all 0.3s ease;
-            cursor: default;
+        /* Haier, Samsung, Hisense Square Boxes */
+        .brand-box {
+            width: 140px;
+            height: 140px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .brand-haier {
+            background-color: #005bba;
+            font-size: 32px;
+            letter-spacing: -1px;
         }
 
-        .brand-logo:hover {
-            color: var(--secondary); /* Obarvení do modra po najetí */
-            transform: scale(1.05);
+        .brand-samsung {
+            background-color: #000000;
+            font-size: 22px;
+            letter-spacing: 1.5px;
         }
-        /* ------------------------- */
 
+        .brand-hisense {
+            background-color: #00b395;
+            font-size: 28px;
+            font-style: italic;
+        }
+
+        /* Bosch & LG composite logos */
+        .brand-composite {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand-bosch-text {
+            color: #e20015;
+            font-family: 'Arial Black', Arial, sans-serif;
+            font-size: 38px;
+            font-weight: 900;
+            letter-spacing: 1px;
+        }
+
+        .brand-lg-text {
+            color: #6a6a6a;
+            font-family: Arial, sans-serif;
+            font-size: 42px;
+            font-weight: bold;
+        }
+
+        /* --- SERVICES SECTION --- */
         .section {
             padding: 100px 0;
         }
@@ -233,16 +223,15 @@
         .service-card {
             background: var(--white);
             padding: 50px 30px;
-            border-radius: var(--radius); /* Použití 1.5rem zaoblení */
+            border-radius: var(--radius); /* Rounded */
             text-align: center;
             box-shadow: 0 15px 40px rgba(0,0,0,0.04);
             border: 1px solid rgba(0,0,0,0.02);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: transform 0.4s;
         }
 
         .service-card:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.08);
+            transform: translateY(-10px);
         }
 
         .icon {
@@ -257,6 +246,31 @@
             color: var(--dark);
         }
 
+        /* --- LOCATIONS (TAGS) SECTION --- */
+        .locations {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 40px;
+        }
+
+        .tag {
+            background: rgba(255,255,255,0.15);
+            padding: 12px 30px;
+            border-radius: var(--radius); /* Rounded */
+            font-weight: 600;
+            font-size: 18px;
+        }
+
+        /* --- REFERENCES SECTION --- */
         .ref-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -266,8 +280,7 @@
         .ref-item {
             position: relative;
             overflow: hidden;
-            border-radius: var(--radius); /* Použití 1.5rem zaoblení */
-            aspect-ratio: 4/3; /* Zajišťuje stejný obdélníkový tvar karet */
+            border-radius: var(--radius); /* Rounded */
             background-color: #e2e8f0; 
             box-shadow: 0 10px 30px rgba(0,0,0,0.08);
         }
@@ -275,7 +288,9 @@
         .ref-item img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Obrázek se ořízne, aby beze zbytku vyplnil rámeček */
+            aspect-ratio: 4 / 3; /* Exact Ratio */
+            object-fit: cover; /* Exact crop to prevent distortion */
+            border-radius: var(--radius); /* Redundant but safe */
             display: block;
             transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
@@ -284,24 +299,7 @@
             transform: scale(1.08);
         }
 
-        .ref-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-            color: var(--white);
-            padding: 30px 20px 20px;
-            font-weight: 600;
-            text-align: center;
-            transform: translateY(100%);
-            transition: transform 0.3s ease;
-        }
-
-        .ref-item:hover .ref-overlay {
-            transform: translateY(0);
-        }
-
+        /* --- FOOTER & CONTACT FORM --- */
         footer {
             background-color: var(--primary);
             color: var(--white);
@@ -330,18 +328,9 @@
             color: var(--white);
             text-decoration: none;
             font-weight: 600;
-            transition: color 0.3s;
         }
 
-        .contact-info a:hover {
-            color: var(--accent);
-        }
-
-        .highlight-link {
-            color: #ff6b81 !important;
-            text-decoration: underline !important;
-        }
-
+        /* 2-Column Form Layout */
         .form-layout {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -366,7 +355,7 @@
             border: 1px solid rgba(255,255,255,0.4);
             color: var(--white);
             font-size: 16px;
-            border-radius: var(--radius); /* Použití 1.5rem zaoblení */
+            border-radius: var(--radius); /* Rounded Inputs */
             transition: all 0.3s;
         }
 
@@ -380,13 +369,12 @@
             outline: none;
             border-color: var(--white);
             background: rgba(255,255,255,0.05);
-            box-shadow: 0 0 0 3px rgba(255,255,255,0.1);
         }
 
         .form-layout textarea {
             flex-grow: 1;
             resize: none;
-            min-height: 250px; 
+            min-height: 100%; /* Matches height of left column */
         }
 
         .submit-col {
@@ -404,33 +392,13 @@
             font-weight: 700;
             font-size: 16px;
             cursor: pointer;
-            border-radius: var(--radius); /* Použití 1.5rem zaoblení */
-            transition: transform 0.3s, box-shadow 0.3s;
+            border-radius: var(--radius); /* Rounded Button */
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
         }
 
         .submit-col button:hover {
             transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-        }
-
-        #success-msg {
-            display: none;
-            grid-column: 1 / -1;
-            background: rgba(34, 197, 94, 0.2);
-            border: 1px solid #22c55e;
-            color: #4ade80;
-            padding: 25px;
-            text-align: center;
-            font-size: 18px;
-            font-weight: 600;
-            border-radius: var(--radius);
-            animation: fadeIn 0.5s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
         }
 
         .copyright {
@@ -442,41 +410,26 @@
             color: rgba(255,255,255,0.5);
         }
 
+        /* Responsive Breakpoints */
         @media (max-width: 992px) {
-            .footer-grid {
-                grid-template-columns: 1fr;
-            }
-            .contact-info {
-                text-align: center;
-                margin-bottom: 20px;
-            }
+            .footer-grid { grid-template-columns: 1fr; }
+            .contact-info { text-align: center; margin-bottom: 30px; }
         }
 
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            .hero {
-                padding-top: 160px;
-                padding-bottom: 120px;
-            }
-            .form-layout {
-                grid-template-columns: 1fr; 
-            }
-            .form-layout textarea {
-                min-height: 180px;
-            }
-            .submit-col {
-                justify-content: center;
-            }
-            .submit-col button {
-                width: 100%;
-            }
+            .nav-links { display: none; }
+            .hero { padding-top: 160px; padding-bottom: 120px; }
+            .form-layout { grid-template-columns: 1fr; } 
+            .form-layout textarea { min-height: 200px; }
+            .submit-col { justify-content: center; }
+            .submit-col button { width: 100%; }
+            .brands-logos { gap: 30px; }
         }
     </style>
 </head>
 <body>
 
+    <!-- 1. Fixed header -->
     <header>
         <div class="container header-content">
             <a href="#" class="logo">KLIMA<span>DOMA</span></a>
@@ -489,34 +442,57 @@
         </div>
     </header>
 
+    <!-- 2. Hero Section -->
     <section class="hero">
         <div class="container">
             <h1>Klimatizace, které <span class="blue">chladí</span> i <span class="orange">topí</span>.</h1>
             <p>Profesionální montáže klimatizací do rodinných domů, bytů, kanceláří i chat. Navrhneme řešení na míru přímo pro vás.</p>
-            <div class="hero-buttons">
-                <a href="#kontakt" class="btn btn-solid">Napsat poptávku</a>
-                <a href="#sluzby" class="btn btn-outline">Naše služby</a>
-            </div>
         </div>
     </section>
 
-    <!-- NOVÁ SEKCE ZNAČEK -->
+    <!-- 3. Brands Section -->
     <section class="brands-section">
-        <div class="container">
-            <p class="brands-title">Instalujeme a servisujeme špičkové značky</p>
-            <div class="brands-logos">
-                <!-- Čistý CSS a typografický design log -->
-                <span class="brand-logo" style="font-family: Arial, sans-serif; letter-spacing: 1px; text-transform: uppercase;">DAIKIN</span>
-                <span class="brand-logo" style="font-family: 'Times New Roman', serif; font-weight: bold;">TOSHIBA</span>
-                <span class="brand-logo" style="font-family: Impact, sans-serif; letter-spacing: 2px; text-transform: uppercase;">SAMSUNG</span>
-                <span class="brand-logo" style="font-family: Helvetica, sans-serif; text-transform: uppercase;">LG</span>
-                <span class="brand-logo" style="font-family: 'Trebuchet MS', sans-serif; font-weight: bold;">Panasonic</span>
-                <span class="brand-logo" style="font-family: Arial, sans-serif; font-style: italic; font-weight: 900;">Midea</span>
-                <span class="brand-logo" style="font-family: Tahoma, sans-serif; text-transform: uppercase;">SINCLAIR</span>
+        <div class="container brands-logos">
+            
+            <!-- Haier -->
+            <div class="brand-box brand-haier">Haier</div>
+            
+            <!-- SAMSUNG -->
+            <div class="brand-box brand-samsung">SAMSUNG</div>
+            
+            <!-- Hisense -->
+            <div class="brand-box brand-hisense">Hisense</div>
+            
+            <!-- BOSCH -->
+            <div class="brand-composite">
+                <svg viewBox="0 0 100 100" width="56" height="56">
+                    <circle cx="50" cy="50" r="45" fill="none" stroke="#777" stroke-width="6"/>
+                    <circle cx="50" cy="50" r="35" fill="none" stroke="#777" stroke-width="3"/>
+                    <path d="M 35 25 L 35 75 M 65 25 L 65 75 M 35 25 A 15 15 0 0 1 65 25 M 35 75 A 15 15 0 0 0 65 75" fill="none" stroke="#777" stroke-width="8"/>
+                </svg>
+                <span class="brand-bosch-text">BOSCH</span>
             </div>
+
+            <!-- LG -->
+            <div class="brand-composite">
+                <svg viewBox="0 0 100 100" width="60" height="60">
+                    <circle cx="50" cy="50" r="50" fill="#a50034"/>
+                    <!-- LG L -->
+                    <path d="M 45 25 L 45 70 L 65 70" fill="none" stroke="white" stroke-width="6"/>
+                    <!-- LG G Outer -->
+                    <path d="M 80 50 A 30 30 0 1 1 50 20" fill="none" stroke="white" stroke-width="6"/>
+                    <!-- LG G Inner horizontal -->
+                    <path d="M 80 50 L 60 50" fill="none" stroke="white" stroke-width="6"/>
+                    <!-- Dot -->
+                    <circle cx="30" cy="40" r="5" fill="white"/>
+                </svg>
+                <span class="brand-lg-text">LG</span>
+            </div>
+
         </div>
     </section>
 
+    <!-- 4. Services Section -->
     <section id="sluzby" class="section container">
         <h2 class="section-title">Co pro vás zajistíme?</h2>
         <div class="services-grid">
@@ -538,36 +514,45 @@
         </div>
     </section>
 
-    <section id="reference" class="section container">
-        <h2 class="section-title">Ukázky naší práce</h2>
-        <div class="ref-grid">
-            <div class="ref-item">
-                <img src="edc5f0_f563820b7ddb4809b5867be46c5bcd1b~mv2_d_2304_4096_s_2.avif" alt="Reference 1" onerror="this.src='https://placehold.co/600x400/e2e8f0/64748b?text=Montaz+v+rodinnem+dome'">
-                <div class="ref-overlay">Montáž v rodinném domě</div>
-            </div>
-            <div class="ref-item">
-                <img src="edc5f0_155d99a5c1e04e8da778347df84540f7~mv2_d_4096_2304_s_2.avif" alt="Reference 2" onerror="this.src='https://placehold.co/600x400/e2e8f0/64748b?text=Moderni+obyvak'">
-                <div class="ref-overlay">Instalace do moderního obýváku</div>
-            </div>
-            <div class="ref-item">
-                <img src="edc5f0_93513e05f01a49429cec5b0e37d9b81a~mv2.avif" alt="Reference 3" onerror="this.src='https://placehold.co/600x400/e2e8f0/64748b?text=Bytova+jednotka'">
-                <div class="ref-overlay">Bytová jednotka - ložnice</div>
-            </div>
-            <div class="ref-item">
-                <img src="edc5f0_8d0caaf74ac043ff9c770de0ae43bd74~mv2_d_2304_4096_s_2.avif" alt="Reference 4" onerror="this.src='https://placehold.co/600x400/e2e8f0/64748b?text=Velkokapacitni+kancelare'">
-                <div class="ref-overlay">Velkokapacitní kanceláře</div>
-            </div>
-            <div class="ref-item">
-                <img src="edc5f0_776771eefc1341768475406606c7d65e~mv2_d_2304_4096_s_2.avif" alt="Reference 5" onerror="this.src='https://placehold.co/600x400/e2e8f0/64748b?text=Skryta+instalace'">
-                <div class="ref-overlay">Skrytá instalace v interiéru</div>
-            </div>
-            <div class="ref-item">
-                <img src="edc5f0_6fe200d1e62549a1bb2de19c5d83d1e9~mv2_d_2304_4096_s_2.avif" alt="Reference 6" onerror="this.src='https://placehold.co/600x400/e2e8f0/64748b?text=Moderni+podkrovni+byt'">
-                <div class="ref-overlay">Moderní podkrovní byt</div>
+    <!-- 5. Locations Section -->
+    <section class="locations">
+        <div class="container">
+            <h2 style="font-size: 32px; margin-bottom: 20px;">Kde všude instalujeme?</h2>
+            <div class="tags">
+                <div class="tag">🏠 Rodinné domy</div>
+                <div class="tag">🏢 Byty a kanceláře</div>
+                <div class="tag">🏡 Chaty a chalupy</div>
+                <div class="tag">🚐 Mobilheimy a buňky</div>
             </div>
         </div>
     </section>
 
+    <!-- 6. References Section -->
+    <section id="reference" class="section container">
+        <h2 class="section-title">Ukázky naší práce</h2>
+        <div class="ref-grid">
+            <div class="ref-item">
+                <img src="fotka1.jpg" alt="Reference 1">
+            </div>
+            <div class="ref-item">
+                <img src="fotka2.jpg" alt="Reference 2">
+            </div>
+            <div class="ref-item">
+                <img src="fotka3.jpg" alt="Reference 3">
+            </div>
+            <div class="ref-item">
+                <img src="fotka4.jpg" alt="Reference 4">
+            </div>
+            <div class="ref-item">
+                <img src="fotka5.jpg" alt="Reference 5">
+            </div>
+            <div class="ref-item">
+                <img src="fotka6.jpg" alt="Reference 6">
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Footer & Contact Form -->
     <footer id="kontakt">
         <div class="container footer-grid">
             
@@ -575,17 +560,15 @@
                 <h2>KONTAKT</h2>
                 <p style="font-size: 26px; font-weight: bold; margin-bottom: 10px;">605 991 892</p>
                 <p style="font-weight: bold; margin-bottom: 40px;"><a href="mailto:infoklimadoma@gmail.com">infoklimadoma@gmail.com</a></p>
-                
-                <p><a href="https://www.klimadoma.com" class="highlight-link">Klimadoma.com</a></p>
-                <p><a href="https://www.klimadoma.com" class="highlight-link">www.klimadoma.com</a></p>
-                
-                <p style="margin-top: 40px; opacity: 0.8;">Hovorčovice, Nádražní 227</p>
+                <p>Hovorčovice, Nádražní 227</p>
             </div>
 
+            <!-- Form Layout (2 Columns) -->
             <div>
-                <form id="contactForm" class="form-layout">
+                <form id="contactForm" class="form-layout" onsubmit="event.preventDefault(); alert('Formulář byl úspěšně odeslán.'); this.reset();">
                     
-                    <div class="inputs-col" id="form-left">
+                    <!-- Left Side: 5 Inputs -->
+                    <div class="inputs-col">
                         <input type="email" placeholder="Email" required>
                         <input type="text" placeholder="Jméno Příjmení" required>
                         <input type="text" placeholder="Předmět">
@@ -593,15 +576,13 @@
                         <input type="tel" placeholder="Telefon">
                     </div>
 
-                    <div class="textarea-col" id="form-right">
+                    <!-- Right Side: 1 Textarea -->
+                    <div class="textarea-col">
                         <textarea placeholder="Zde napište Váš požadavek nebo dotaz. Děkujeme." required></textarea>
                     </div>
 
-                    <div id="success-msg">
-                        ✅ Děkujeme, Vaše zpráva byla úspěšně odeslána. Brzy se Vám ozveme.
-                    </div>
-
-                    <div class="submit-col" id="form-submit">
+                    <!-- Submit Button -->
+                    <div class="submit-col">
                         <button type="submit">ODESLAT</button>
                     </div>
 
@@ -613,21 +594,6 @@
             &copy; 2026 KLIMA DOMA. Všechna práva vyhrazena.
         </div>
     </footer>
-
-    <script>
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault(); 
-            
-            // Skryje políčka a tlačítko, zobrazí úspěšnou zprávu
-            document.getElementById('form-left').style.display = 'none';
-            document.getElementById('form-right').style.display = 'none';
-            document.getElementById('form-submit').style.display = 'none';
-            
-            document.getElementById('success-msg').style.display = 'block';
-            
-            this.reset();
-        });
-    </script>
 
 </body>
 </html>
