@@ -1,1 +1,94 @@
-Hello World stránka
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Složitější Hello World</title>
+    
+    <!-- Načtení Tailwind CSS pro rychlé a moderní stylování -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* Nastavení základního fontu pro celou stránku */
+        body { 
+            font-family: 'Poppins', sans-serif; 
+        }
+        /* Vlastní třída pro ozdobný font nadpisu */
+        .font-pacifico { 
+            font-family: 'Pacifico', cursive; 
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 p-4">
+
+    <!-- Hlavní vycentrovaná karta s efektem po najetí (hover) -->
+    <div class="bg-white/95 backdrop-blur-sm p-8 sm:p-12 rounded-3xl shadow-2xl text-center max-w-lg w-full transform transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(0,0,0,0.4)]">
+        
+        <!-- Ozdobný nadpis -->
+        <h1 class="font-pacifico text-rose-500 text-5xl sm:text-6xl mb-6 drop-shadow-sm">
+            Hello, World!
+        </h1>
+        
+        <!-- Popisný text -->
+        <p class="text-slate-700 font-light leading-relaxed mb-8 text-lg">
+            Toto je pokročilá ukázka s Tailwind CSS, různými fonty, barevným přechodem, moderním stínováním a interaktivním tlačítkem.
+        </p>
+        
+        <!-- Interaktivní tlačítko -->
+        <button onclick="showMessage()" class="bg-rose-500 hover:bg-rose-400 text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:shadow-rose-500/50 hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-rose-300">
+            Klikni na mě
+        </button>
+    </div>
+
+    <!-- Modal Container (skrytý ve výchozím stavu) -->
+    <div id="messageBox" class="fixed inset-0 flex items-center justify-center z-50 hidden opacity-0 transition-opacity duration-300 bg-slate-900/50 backdrop-blur-sm p-4">
+        
+        <!-- Samotné okno zprávy -->
+        <div id="messageContent" class="bg-white rounded-2xl p-8 shadow-2xl max-w-sm w-full text-center transform scale-95 transition-transform duration-300">
+            <div class="text-5xl mb-4">🎉</div>
+            <h3 class="text-2xl font-semibold text-slate-800 mb-2">Ahoj!</h3>
+            <p class="text-slate-600 mb-6">Tohle je vlastní vyskakovací zpráva. Vypadá mnohem lépe než obyčejný systémový alert, viď?</p>
+            
+            <!-- Tlačítko pro zavření -->
+            <button onclick="hideMessage()" class="bg-indigo-500 hover:bg-indigo-400 text-white font-medium py-2 px-6 rounded-full transition-colors w-full focus:outline-none focus:ring-4 focus:ring-indigo-300">
+                Rozumím
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Získání elementů okna
+        const messageBox = document.getElementById('messageBox');
+        const messageContent = document.getElementById('messageContent');
+
+        // Funkce pro zobrazení okna
+        function showMessage() {
+            messageBox.classList.remove('hidden');
+            // Force reflow, aby prohlížeč zaznamenal změnu a plynule přehrál animaci
+            void messageBox.offsetWidth; 
+            
+            messageBox.classList.remove('opacity-0');
+            messageBox.classList.add('opacity-100');
+            messageContent.classList.remove('scale-95');
+            messageContent.classList.add('scale-100');
+        }
+
+        // Funkce pro skrytí okna
+        function hideMessage() {
+            messageBox.classList.remove('opacity-100');
+            messageBox.classList.add('opacity-0');
+            messageContent.classList.remove('scale-100');
+            messageContent.classList.add('scale-95');
+            
+            // Počkáme na dokončení animace (300ms) a pak element úplně skryjeme
+            setTimeout(() => {
+                messageBox.classList.add('hidden');
+            }, 300);
+        }
+    </script>
+</body>
+</html>
