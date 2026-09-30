@@ -10,14 +10,14 @@
     <style>
         :root {
             --primary: #0033b3; 
-            --secondary: #0ea5e9; 
+            --secondary: #0ea5e9; /* Světlejší modrá pro lepší kontrast na tmavém pozadí */
             --accent: #f97316; 
             --dark: #1e293b;
             --light: #f8fafc;
             --white: #ffffff;
             --gray: #64748b;
             
-            /* Jednotné zaoblení pro celý web */
+            /* Jednotné zaoblení pro celý web - 1.5rem */
             --radius: 1.5rem; 
         }
 
@@ -107,24 +107,30 @@
         }
 
         .hero {
-            padding: 180px 20px 120px;
+            padding: 220px 20px 160px;
             text-align: center;
-            background: linear-gradient(135deg, #e0f2fe 0%, var(--white) 100%);
+            /* Přidán obrázek moderního interiéru s tmavým překryvem */
+            background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(0, 15, 60, 0.85)),
+                        url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Parallax efekt */
+            color: var(--white);
         }
 
         .hero h1 {
             font-size: clamp(36px, 5vw, 64px);
             margin-bottom: 25px;
             line-height: 1.2;
-            color: var(--dark);
+            color: var(--white);
         }
 
-        .hero h1 span.blue { color: var(--primary); }
+        .hero h1 span.blue { color: var(--secondary); } /* Světlejší modrá pro čitelnost na tmavém */
         .hero h1 span.orange { color: var(--accent); }
 
         .hero p {
             font-size: 18px;
-            color: var(--gray);
+            color: rgba(255, 255, 255, 0.9);
             max-width: 700px;
             margin: 0 auto 40px;
         }
@@ -146,25 +152,26 @@
         }
 
         .btn-solid {
-            background-color: var(--primary);
+            background-color: var(--secondary);
             color: var(--white);
-            box-shadow: 0 10px 25px rgba(0, 51, 204, 0.3);
+            box-shadow: 0 10px 25px rgba(14, 165, 233, 0.4);
         }
 
         .btn-solid:hover {
-            background-color: #002288;
+            background-color: var(--primary);
             transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(0, 51, 204, 0.4);
         }
 
         .btn-outline {
             background-color: transparent;
-            color: var(--dark);
-            border: 2px solid var(--primary);
+            color: var(--white);
+            border: 2px solid var(--white);
         }
 
         .btn-outline:hover {
-            background-color: var(--primary);
-            color: var(--white);
+            background-color: var(--white);
+            color: var(--primary);
         }
 
         .section {
@@ -187,7 +194,7 @@
         .service-card {
             background: var(--white);
             padding: 50px 30px;
-            border-radius: var(--radius);
+            border-radius: var(--radius); /* Použití 1.5rem zaoblení */
             text-align: center;
             box-shadow: 0 15px 40px rgba(0,0,0,0.04);
             border: 1px solid rgba(0,0,0,0.02);
@@ -214,28 +221,28 @@
         .ref-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem; /* Nastavení mezer dle požadavku */
+            gap: 2rem; 
         }
 
         .ref-item {
             position: relative;
             overflow: hidden;
-            border-radius: var(--radius);
-            aspect-ratio: 4/3; /* Zajišťuje stejný tvar pro všechny karty */
-            background-color: #e2e8f0; /* Záložní barva, kdyby se obrázek nenačetl */
+            border-radius: var(--radius); /* Použití 1.5rem zaoblení */
+            aspect-ratio: 4/3; /* Zajišťuje stejný obdélníkový tvar karet */
+            background-color: #e2e8f0; 
             box-shadow: 0 10px 30px rgba(0,0,0,0.08);
         }
 
         .ref-item img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* KLÍČOVÁ OPRAVA: Obrázek vyplní celý kontejner a ořízne se */
+            object-fit: cover; /* Obrázek se ořízne, aby beze zbytku vyplnil rámeček */
             display: block;
             transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
         .ref-item:hover img {
-            transform: scale(1.08); /* Jemný plynulý zoom při najetí */
+            transform: scale(1.08);
         }
 
         .ref-overlay {
@@ -253,7 +260,7 @@
         }
 
         .ref-item:hover .ref-overlay {
-            transform: translateY(0); /* Vyjetí textu při najetí myší */
+            transform: translateY(0);
         }
 
         footer {
@@ -320,7 +327,7 @@
             border: 1px solid rgba(255,255,255,0.4);
             color: var(--white);
             font-size: 16px;
-            border-radius: var(--radius); /* Aplikace stejného zaoblení */
+            border-radius: var(--radius); /* Použití 1.5rem zaoblení */
             transition: all 0.3s;
         }
 
@@ -358,7 +365,7 @@
             font-weight: 700;
             font-size: 16px;
             cursor: pointer;
-            border-radius: var(--radius); /* Aplikace stejného zaoblení */
+            border-radius: var(--radius); /* Použití 1.5rem zaoblení */
             transition: transform 0.3s, box-shadow 0.3s;
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
@@ -411,7 +418,8 @@
                 display: none;
             }
             .hero {
-                padding-top: 140px;
+                padding-top: 160px;
+                padding-bottom: 120px;
             }
             .form-layout {
                 grid-template-columns: 1fr; 
@@ -478,7 +486,6 @@
         <h2 class="section-title">Ukázky naší práce</h2>
         <div class="ref-grid">
             <div class="ref-item">
-                <!-- Doplněno chování při chybějícím obrázku (onerror) pro lepší zobrazení v náhledu, pokud soubor chybí -->
                 <img src="edc5f0_f563820b7ddb4809b5867be46c5bcd1b~mv2_d_2304_4096_s_2.avif" alt="Reference 1" onerror="this.src='https://placehold.co/600x400/e2e8f0/64748b?text=Montaz+v+rodinnem+dome'">
                 <div class="ref-overlay">Montáž v rodinném domě</div>
             </div>
@@ -555,6 +562,7 @@
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault(); 
             
+            // Skryje políčka a tlačítko, zobrazí úspěšnou zprávu
             document.getElementById('form-left').style.display = 'none';
             document.getElementById('form-right').style.display = 'none';
             document.getElementById('form-submit').style.display = 'none';
